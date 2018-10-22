@@ -51,9 +51,8 @@ library(here)
 ```
 #load data
 ```{r load data}
-star <- import(here("W5lab", "star.csv" ),
-            setclass = "tbl_df",
-            skip = 15)
+star <- import(here("data", "star.csv" ),
+            setclass = "tbl_df")
 ```
 
 ```{r analysis-preferences}
