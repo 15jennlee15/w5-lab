@@ -39,9 +39,21 @@ documentclass     : "apa6"
 classoption       : "man"
 output            : papaja::apa6_pdf
 ---
-
+#Setup packages to be used
 ```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE, fig.width = 6.5, fig.height = 8)
+
 library("papaja")
+library(ggplot2)
+library(tidyverse)
+library(rio)
+library(here)
+```
+#load data
+```{r load data}
+star <- import(here("W5lab", "star.csv" ),
+            setclass = "tbl_df",
+            skip = 15)
 ```
 
 ```{r analysis-preferences}
