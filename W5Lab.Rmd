@@ -94,3 +94,26 @@ r_refs(file = "r-references.bib")
 
 <div id = "refs"></div>
 \endgroup
+
+
+#Commit 5: Plot
+
+```{r plot, echo = FALSE}
+
+plot<- ggplot(star, aes(totexp, tmathss)) + 
+  geom_point(color = "light grey") +
+  geom_smooth (aes(color = frl), method = "lm") +
+  labs(x = "Teacher Experience (years)", 
+     y = "Total Math Scale Score",
+     title = "Relation between teacher experience and math scores",
+     subtitle = "Separate regression lines displayed by free/reduced price lunch status") +
+  theme_minimal()
+
+plot(plot)
+```
+
+It appears that there is a main effect of lunch status, such that those who receive paid means exhibit higher total math scores than those who receive free/reduced price meals. There is also a main effect of teacher experience, such that as teacher experience increases, total math scores for students increases, regardless of lunch status. There is no interaction. 
+
+
+
+
