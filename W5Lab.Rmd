@@ -79,7 +79,7 @@ We used `r cite_r("r-references.bib")` for all our analyses.
 # Results
 
 # Discussion
-
+As we found in our meta-analysis (@my_meta) there is a small, but enduring association between parenting styles and child cortisol. One of our co-authors is also a total badass whose paper won an award for best publication (@jenn).
 
 \newpage
 
