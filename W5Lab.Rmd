@@ -95,6 +95,17 @@ r_refs(file = "r-references.bib")
 <div id = "refs"></div>
 \endgroup
 
+#Commit 4: Table
+Boys from non-low income families have an average math score of 492.85 (46.34) and an average reading score of 441.46 (32.32). Boys from low income families have lower average scores in math and reading, 469.87 (46.09) and 425.38 (26.63), respectively. Girls results follow a similar pattern, such that compared to girls from low-income families, girls from non-low income families have higher scores in math, 501.21 (45.96) vs. 477.51 (46.31) and reading, 448.54 (34.52) vs. 430.80 (27.42).
+
+```{r}
+library(kableExtra)
+table <- star %>%
+  group_by(sex, frl) %>%
+  summarize(math_mean=mean(tmathss), math_sd=sd(tmathss), rdg_mean=mean(treadss), rdg_sd=sd(treadss))
+kable(table)%>%
+  kable_styling(bootstrap_options = "striped", font_size = 8)
+```
 
 #Commit 5: Plot
 
