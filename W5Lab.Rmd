@@ -24,7 +24,7 @@ abstract: |
   <!-- https://tinyurl.com/ybremelq -->
   
 keywords          : "Rockstars, Science Rules"
-
+# 😂
 bibliography      : ["r-references.bib"]
 
 floatsintext      : no
@@ -39,8 +39,9 @@ documentclass     : "apa6"
 classoption       : "man"
 output            : papaja::apa6_pdf
 ---
-#Setup packages to be used
+
 ```{r setup, include = FALSE}
+# Setup packages to be used
 knitr::opts_chunk$set(echo = FALSE, fig.width = 6.5, fig.height = 8)
 
 library("papaja")
@@ -49,8 +50,9 @@ library(tidyverse)
 library(rio)
 library(here)
 ```
-#load data
+
 ```{r load data}
+# load data
 star <- import(here("data", "star.csv" ),
             setclass = "tbl_df")
 ```
@@ -73,39 +75,48 @@ We report how we determined our sample size, all data exclusions (if any), all m
 ## Procedure
 
 ## Data analysis
-We used `r cite_r("r-references.bib")` for all our analyses.
-
-
+<!-- We used `r cite_r("r-references.bib")` for all our analyses. -->
+<!-- You probably don't want the inline code evaluation. It will cite all the  -->
+<!-- pacakges you used - which is a good thing to do, but it's a lot of text here. -->
 # Results
 
 # Discussion
-As we found in our meta-analysis (@my_meta) there is a small, but enduring association between parenting styles and child cortisol. One of our co-authors is also a total badass whose paper won an award for best publication (@jenn).
+As we found in our meta-analysis [@my_meta] there is a small, but enduring
+association between parenting styles and child cortisol. One of our co-authors
+is also a total badass whose paper won an award for best publication [@jenn]
 
 
-#Commit 4: Table
 Boys from non-low income families have an average math score of 492.85 (46.34) and an average reading score of 441.46 (32.32). Boys from low income families have lower average scores in math and reading, 469.87 (46.09) and 425.38 (26.63), respectively. Girls results follow a similar pattern, such that compared to girls from low-income families, girls from non-low income families have higher scores in math, 501.21 (45.96) vs. 477.51 (46.31) and reading, 448.54 (34.52) vs. 430.80 (27.42).
 
 ```{r}
+# Commit 4: Table
 library(kableExtra)
 table <- star %>%
   group_by(sex, frl) %>%
-  summarize(math_mean=mean(tmathss), math_sd=sd(tmathss), rdg_mean=mean(treadss), rdg_sd=sd(treadss))
+  summarize(math_mean = mean(tmathss), 
+            math_sd = sd(tmathss), 
+            rdg_mean = mean(treadss), 
+            rdg_sd = sd(treadss))
 kable(table, 
       format = "latex", 
-      booktabs = TRUE)
+      booktabs = TRUE,
+      caption = "The best table in the history of the world") # Add a caption to
+# make it show up where it should
 ```
 
-#Commit 5: Plot
 
-```{r plot, echo = FALSE}
 
-plot<- ggplot(star, aes(totexp, tmathss)) + 
+```{r fig.cap = "Look at this amazing plot!", echo = FALSE}
+# Commit 5: Plot
+# Add a caption through the `fig.cap` chunk option to get the figure to show
+# up where it should
+plot <- ggplot(star, aes(totexp, tmathss)) + 
   geom_point(color = "light grey") +
   geom_smooth (aes(color = frl), method = "lm") +
   labs(x = "Teacher Experience (years)", 
-     y = "Total Math Scale Score",
-     title = "Relation between teacher experience and math scores",
-     subtitle = "Separate regression lines displayed by free/reduced price lunch status") +
+       y = "Total Math Scale Score",
+       title = "Relation between teacher experience and math scores",
+       subtitle = "Separate regression lines displayed by free/reduced price lunch status") +
   theme_minimal()
 
 plot(plot)
@@ -113,6 +124,7 @@ plot(plot)
 
 It appears that there is a main effect of lunch status, such that those who receive paid means exhibit higher total math scores than those who receive free/reduced price meals. There is also a main effect of teacher experience, such that as teacher experience increases, total math scores for students increases, regardless of lunch status. There is no interaction. 
 
-
+\newpage
+# References
 
 
